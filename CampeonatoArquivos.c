@@ -1,13 +1,14 @@
 /*
-Nommes:
-Giulia Tafuri,
-Igor Alves,
-Isa Beatriz,
-Nikolas de Azevedo e
-Vitor Luis
+Nomes dos Integrantes do grupo:
+Giulia Tafuri;
+Igor Alves;
+Isa Beatriz;
+Nikolas de Azevedo;
+Vitor Luis.
 
 Descrição:
-Programa que administra um campeonato de pontos corridos. Funções implementadas:
+Programa que administra um campeonato de pontos corridos. 
+Funções implementadas:
 - criaTabela - Cria tabela do campeonato, pedindo informações como o nome do campeonato e times ao usuário.
 - atualizaTabela - Atualiza a tabela do campeonato a partir de alguns dados atuais de cada time.
 - retiraTime - Retira time do campeonato a partir do nome do time.
