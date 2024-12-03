@@ -24,7 +24,9 @@ Funções implementadas:
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define N 31
+#define N 35
+#define scanfCampeonato(campeonato) scanf(" %30[A-Za-z0-9_ ]", campeonato);
+#define scanfTime(time) scanf(" %30[^\n]", time);
 
 // Definindo Linked List que será utilizada para organização dos times e algumas funções úteis.
 typedef struct {
@@ -451,7 +453,7 @@ int criaTabela() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato (Atencao: este sera o nome do arquivo):");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -468,7 +470,7 @@ int criaTabela() {
     inicializarLista(&times);
 
     // puts("\nForneca o nome do time (para parar forneca 'fim'):");
-    scanf(" %[^\n]", novo.nome);
+    scanfTime(novo.nome);
     
     while (strcmp("fim", novo.nome)!=0) {
         novo.vitorias = 0;
@@ -479,7 +481,7 @@ int criaTabela() {
         inserirTime(&times, novo);
 
         // puts("\nForneca o nome do time (para parar forneca 'fim'):");
-        scanf(" %[^\n]", novo.nome);
+        scanfTime(novo.nome);
     }
 
     while (times.tamanho!=0) {
@@ -498,7 +500,7 @@ int atualizaTabela() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -524,7 +526,7 @@ int atualizaTabela() {
     fclose(arq);
 
     // puts("Forneca o nome do time.");
-    scanf(" %[^\n]", nome_time);
+    scanfTime(nome_time);
 
     int ini=0, fim=num_times-1, meio, encontrado=0;
     while (ini<=fim) {
@@ -608,7 +610,7 @@ int retiraTime() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -632,9 +634,8 @@ int retiraTime() {
     }
     fclose(arq);
 
-
     // puts("Forneca o nome do time:");
-    scanf(" %[^\n]", nome_deletar);
+    scanfTime(nome_deletar);
 
     int ini=0, fim=num_times-1, meio, encontrado=0;
     while (ini<=fim) {
@@ -675,7 +676,7 @@ int registraJogo() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -701,10 +702,12 @@ int registraJogo() {
     fclose(arq);
 
     // puts("Forneca o num de gols e o nome do primeiro time: (gols nome)");
-    scanf(" %d %[^\n]", &gols1, nome1);
+    scanf(" %d", &gols1);
+    scanfTime(nome1);
 
     // puts("Forneca o num de gols e o nome do segundo time: (gols nome)");
-    scanf(" %d %[^\n]", &gols2, nome2);
+    scanf(" %d", &gols2);
+    scanfTime(nome2);
 
     int ini=0, fim=num_times-1, encontrado=0, meio1, meio2;
     while (ini<=fim) {
@@ -783,7 +786,7 @@ int campeaoAtual() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -825,7 +828,7 @@ int trocaDivisoes() {
     char nome1[N], nome2[N];
 
     // puts("\nForneca o nome do campeonato de maior divisao:");
-    scanf(" %[A-Za-z0-9_ ]", nome1);
+    scanfCampeonato(nome1);
     while(getchar() != '\n');
     strcat(nome1, ".bin");
 
@@ -853,7 +856,7 @@ int trocaDivisoes() {
     fclose(arq1);
 
     // puts("\nForneca o nome do campeonato de menor divisao:");
-    scanf(" %[A-Za-z0-9_ ]", nome2);
+    scanfCampeonato(nome2);
     while(getchar() != '\n');
     strcat(nome2, ".bin");
 
@@ -948,7 +951,7 @@ int visualizaTabela() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -1030,7 +1033,7 @@ int reiniciaTabela() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:");
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
@@ -1078,7 +1081,7 @@ int apagarCampeonato() {
     char nome[N];
 
     // puts("\nForneca o nome do campeonato:"); 
-    scanf(" %[A-Za-z0-9_ ]", nome);
+    scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
 
