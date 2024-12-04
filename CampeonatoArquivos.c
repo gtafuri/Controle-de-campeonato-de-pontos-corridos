@@ -351,18 +351,18 @@ int main() {
     int opcao, parada=0, resultado;
 
     do {
-        // puts("Opcoes do programa:\n"
-        // "1 - Inicia tabela de campeonato novo.\n"
-        // "2 - Atualizar a tabela com base nos dados do time.\n"
-        // "3 - Retira time do campeonato.\n"
-        // "4 - Registar partida nova jogado entre dois times.\n"
-        // "5 - Visualizar dados do campeao atual.\n"
-        // "6 - Trocar times de divisao.\n"
-        // "7 - Mostrar tabela do campeonato.\n"
-        // "8 - Reiniciar campeonato.\n"
-        // "9 - Apagar o campeonato.\n"
-        // "0 - Sair do programa.");
-        // printf("Forneca o numero da funcao que deseja usar:\t");
+        puts("Opcoes do programa:\n"
+        "1 - Inicia tabela de campeonato novo.\n"
+        "2 - Atualizar a tabela com base nos dados do time.\n"
+        "3 - Retira time do campeonato.\n"
+        "4 - Registar partida nova jogado entre dois times.\n"
+        "5 - Visualizar dados do campeao atual.\n"
+        "6 - Trocar times de divisao.\n"
+        "7 - Mostrar tabela do campeonato.\n"
+        "8 - Reiniciar campeonato.\n"
+        "9 - Apagar o campeonato.\n"
+        "0 - Sair do programa.");
+        printf("Forneca o numero da funcao que deseja usar:\t");
         scanf("%d", &opcao);
         while(getchar() != '\n');
 
@@ -452,7 +452,7 @@ int criaTabela() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato (Atencao: este sera o nome do arquivo):");
+    puts("\nForneca o nome do campeonato (Atencao: este sera o nome do arquivo):");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -469,7 +469,7 @@ int criaTabela() {
     TIME novo;
     inicializarLista(&times);
 
-    // puts("\nForneca o nome do time (para parar forneca 'fim'):");
+    puts("\nForneca o nome do time (para parar forneca 'fim'):");
     scanfTime(novo.nome);
     
     while (strcmp("fim", novo.nome)!=0) {
@@ -480,7 +480,7 @@ int criaTabela() {
         novo.gols_contra = 0;
         inserirTime(&times, novo);
 
-        // puts("\nForneca o nome do time (para parar forneca 'fim'):");
+        puts("\nForneca o nome do time (para parar forneca 'fim'):");
         scanfTime(novo.nome);
     }
 
@@ -499,7 +499,7 @@ int atualizaTabela() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:");
+    puts("\nForneca o nome do campeonato:");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -525,7 +525,7 @@ int atualizaTabela() {
     }
     fclose(arq);
 
-    // puts("Forneca o nome do time.");
+    puts("Forneca o nome do time.");
     scanfTime(nome_time);
 
     int ini=0, fim=num_times-1, meio, encontrado=0;
@@ -544,7 +544,7 @@ int atualizaTabela() {
     if (!encontrado) {
         int parada=0, verificador;
         while (!parada) {
-            // puts("Time nao encontrado, deseja inserir na tabela? (1 ou 0)");
+            puts("Time nao encontrado, deseja inserir na tabela? (1 ou 0)");
             scanf(" %d", &verificador);
             while(getchar() != '\n');
 
@@ -555,7 +555,7 @@ int atualizaTabela() {
             } else if (verificador==1) {
                 TIME novo;
                 strcpy(novo.nome, nome_time);
-                // puts("Forneca num de vitorias, empates, derrotas, gols marcados e gols contra: (nesta ordem)");
+                puts("Forneca num de vitorias, empates, derrotas, gols marcados e gols contra: (nesta ordem)");
                 scanf(" %d %d %d %d %d", &novo.vitorias, &novo.empates, &novo.derrotas, &novo.gols_marcados, &novo.gols_contra);
                 while(getchar() != '\n');
                 
@@ -586,7 +586,7 @@ int atualizaTabela() {
         }
     
     } else {
-        // puts("Time encontrado. Forneca num de vitorias, empates, derrotas, gols marcados e gols contra: (nesta ordem)");
+        puts("Time encontrado. Forneca num de vitorias, empates, derrotas, gols marcados e gols contra: (nesta ordem)");
         scanf(" %d %d %d %d %d", &times[meio].vitorias, &times[meio].empates, &times[meio].derrotas, &times[meio].gols_marcados, &times[meio].gols_contra);
         while(getchar() != '\n');
 
@@ -609,7 +609,7 @@ int retiraTime() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:");
+    puts("\nForneca o nome do campeonato:");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -634,7 +634,7 @@ int retiraTime() {
     }
     fclose(arq);
 
-    // puts("Forneca o nome do time:");
+    puts("Forneca o nome do time:");
     scanfTime(nome_deletar);
 
     int ini=0, fim=num_times-1, meio, encontrado=0;
@@ -675,7 +675,7 @@ int registraJogo() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:");
+    puts("\nForneca o nome do campeonato:");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -701,11 +701,11 @@ int registraJogo() {
     rewind(arq);
     fclose(arq);
 
-    // puts("Forneca o num de gols e o nome do primeiro time: (gols nome)");
+    puts("Forneca o num de gols e o nome do primeiro time: (gols nome)");
     scanf(" %d", &gols1);
     scanfTime(nome1);
 
-    // puts("Forneca o num de gols e o nome do segundo time: (gols nome)");
+    puts("Forneca o num de gols e o nome do segundo time: (gols nome)");
     scanf(" %d", &gols2);
     scanfTime(nome2);
 
@@ -785,7 +785,7 @@ int campeaoAtual() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:");
+    puts("\nForneca o nome do campeonato:");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -827,7 +827,7 @@ int trocaDivisoes() {
     FILE *arq1, *arq2;
     char nome1[N], nome2[N];
 
-    // puts("\nForneca o nome do campeonato de maior divisao:");
+    puts("\nForneca o nome do campeonato de maior divisao:");
     scanfCampeonato(nome1);
     while(getchar() != '\n');
     strcat(nome1, ".bin");
@@ -855,7 +855,7 @@ int trocaDivisoes() {
     }
     fclose(arq1);
 
-    // puts("\nForneca o nome do campeonato de menor divisao:");
+    puts("\nForneca o nome do campeonato de menor divisao:");
     scanfCampeonato(nome2);
     while(getchar() != '\n');
     strcat(nome2, ".bin");
@@ -890,7 +890,7 @@ int trocaDivisoes() {
 
     int num_troca;
 
-    // puts("\nForneca o numero de times mudando de divisao:");
+    puts("\nForneca o numero de times mudando de divisao:");
     scanf(" %d", &num_troca);
     while(getchar() != '\n');
 
@@ -950,7 +950,7 @@ int visualizaTabela() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:");
+    puts("\nForneca o nome do campeonato:");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -976,13 +976,13 @@ int visualizaTabela() {
     fclose(arq);
 
     int opcao;
-    // puts("\nOpcoes de ordenacao da tabela:\n"
-    // "1-Ordem alfabetica\n"
-    // "2-Numero de pontos\n"
-    // "3-Numero de vitorias\n"
-    // "4-Saldo de gols\n"
-    // "5-Padrao");
-    // printf("Forneca o numero da opcao:\t");
+    puts("\nOpcoes de ordenacao da tabela:\n"
+    "1-Ordem alfabetica\n"
+    "2-Numero de pontos\n"
+    "3-Numero de vitorias\n"
+    "4-Saldo de gols\n"
+    "5-Padrao");
+    printf("Forneca o numero da opcao:\t");
     scanf(" %d", &opcao);
         while(getchar() != '\n');
 
@@ -1032,7 +1032,7 @@ int reiniciaTabela() {
     FILE *arq;
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:");
+    puts("\nForneca o nome do campeonato:");
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
@@ -1080,7 +1080,7 @@ int reiniciaTabela() {
 int apagarCampeonato() {
     char nome[N];
 
-    // puts("\nForneca o nome do campeonato:"); 
+    puts("\nForneca o nome do campeonato:"); 
     scanfCampeonato(nome);
     while(getchar() != '\n');
     strcat(nome, ".bin");
